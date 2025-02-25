@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BookMapper">
+	<resultMap type="com.spring.ulgi.book.model.vo.BookVO" id="bookResultMap">
+		<id		property="bookNo" 	  column="BOOK_NO"/>
+		<result property="bookName"   column="BOOK_NAME"/>
+		<result property="bookWriter" column="BOOK_WRITER"/>
+		<result property="bookPrice"  column="BOOK_PRICE"/>
+		<result property="publisher"  column="PUBLISHER"/>
+		<result property="genre" 	  column="GENRE"/>
+	</resultMap>
+	<insert id="insertBook">
+		insert into book values(SEQ_BOOK_NO.NEXTVAL,#{bookName},#{bookWriter},#{bookPrice},#{publisher},#{genre})
+	</insert>
+	<delete id="deleteBook">
+		delete from book where BOOK_NO = #{bookNo}
+	</delete>
+	<select id="getTotalCount" resultType="_int">
+		select count(*) from book	
+	</select>
+	<select id="getSearchCount" resultType="_int">
+		select count(*) from book
+		<where>
+	        <if test="searchCondition == 'code'">
+	            BOOK_NO LIKE '%' || #{searchKeyword} || '%'
+	        </if>
+	        <if test="searchCondition == 'title'">
+	            BOOK_NAME LIKE '%' || #{searchKeyword} || '%'
+	        </if>
+	        <if test="searchCondition == 'writer'">
+	            BOOK_WRITER LIKE '%' || #{searchKeyword} || '%'
+	        </if>
+       		<if test="searchCondition == 'all'">
+       			BOOK_NO LIKE '%' || #{searchKeyword} || '%' or
+	            BOOK_NAME LIKE '%' || #{searchKeyword} || '%' or
+	            BOOK_WRITER LIKE '%' || #{searchKeyword} || '%'
+       		</if>
+   		</where>
+	</select>
+	<select id="selectListAll" resultMap="bookResultMap">
+		select * from book ORDER BY BOOK_NO DESC
+	</select>
+	<select id="selectOneByNo" resultMap="bookResultMap">
+		select * from book where BOOK_NO= #{bookNo}
+	</select>
+	<select id="selectSearchList" resultMap="bookResultMap">
+		select * from book
+		<where>
+			<if test="searchCondition == 'code'">
+				BOOK_NO like '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'title'">
+				BOOK_NAME like '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'writer'">
+				BOOK_WRITER like '%'||#{searchKeyword}||'%'
+			</if>
+      		<if test="searchCondition == 'all'">
+       			BOOK_NO LIKE '%' || #{searchKeyword} || '%' or
+	            BOOK_NAME LIKE '%' || #{searchKeyword} || '%' or
+	            BOOK_WRITER LIKE '%' || #{searchKeyword} || '%'
+       		</if>			
+		</where>
+		order by book_no desc
+	</select>
+</mapper>  

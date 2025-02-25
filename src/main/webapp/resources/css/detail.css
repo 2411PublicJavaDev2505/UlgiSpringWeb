@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+main{
+	--width: 1000px;
+	--height: 550px;
+	--margin: 50px auto;
+	padding: 50px;
+	background-color: #fffcfc;
+}
+form{
+	display: block;
+}
+
+.content-title{
+	font-size: 25px;
+	color: #2d336b;
+	margin: 0;
+	padding: 30px 0;
+}
+
+table{
+	
+	height: 300px;
+	margin: 30px auto;
+}
+.detail td{
+	width: 300px;
+	text-align: center;
+	
+}
+.tbTitle {
+	border-radius: 4px;
+	background-color: #8089dd;
+	font-size: 15px;
+	color: #fff;
+}
+.tbContent{
+	border-radius: 4px;
+	background-color: #fff;
+}
+
+.delete-button{
+	display: block;
+	width: 100px;
+	padding: 10px 20px;
+	border-radius: 4px;
+	background-color: #8089dd;
+	text-decoration: none;
+	margin: 20px auto;
+	text-align: center;
+	color: #fff;
+	text-decoration: none;
+}
+.delete-button a{
+	color: #fff;
+	text-decoration: none;
+}
+
+.tbContent select {
+	width: 250px;
+	height: 80px;
+	border: 1px solid #8089dd;
+	border-radius: 10px;
+	font-size: 30px;
+	text-align: center;
+	font-family: 'CookieRun-Regular';
+}

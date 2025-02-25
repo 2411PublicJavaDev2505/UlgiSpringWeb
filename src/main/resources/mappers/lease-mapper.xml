@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="LeaseMapper">
+	<resultMap type="Library" id="rsetToLibrary">
+		<id property="leaseNo" column="LEASE_NO"/>
+		<result property="bookNo" column="BOOK_NO"/>
+		<result property="userId" column="USER_ID"/>
+		<result property="leaseDate" column="LEASE_DATE"/>
+		<result property="returnDate" column="RETURN_DATE"/>
+		<result property="bookName" column="BOOK_NAME"/>
+		<result property="userName" column="USER_NAME"/>
+	</resultMap>
+	<select id="selectLeaseList" resultMap="rsetToLibrary">
+		SELECT * FROM 
+		(SELECT LEASE_NO, BOOK_NO, USER_ID, LEASE_DATE, RETURN_DATE, BOOK_NAME, USER_NAME 
+		FROM LIBRARY LEFT OUTER JOIN BOOK USING(BOOK_NO) 
+		LEFT OUTER JOIN CUSTOMER USING(USER_ID)) ORDER BY 1 DESC
+	</select>
+	<select id="getTotalCount" resultType="_int">
+		SELECT COUNT(*) FROM LIBRARY
+	</select>
+	<select id="getTotalCountBySearch" resultType="_int">
+		SELECT COUNT(*) FROM (SELECT LEASE_NO, BOOK_NO, USER_ID, LEASE_DATE, RETURN_DATE, BOOK_NAME, USER_NAME 
+		FROM LIBRARY LEFT OUTER JOIN BOOK USING(BOOK_NO) 
+		LEFT OUTER JOIN CUSTOMER USING(USER_ID))
+		<where>
+			<if test="searchCondition == 'userId'">
+				USER_ID LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'bookName'">
+				BOOK_NAME LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</where>
+	</select>
+	<select id="selectLeaseListBySearch" resultMap="rsetToLibrary">
+		SELECT * FROM (SELECT LEASE_NO, BOOK_NO, USER_ID, LEASE_DATE, RETURN_DATE, BOOK_NAME, USER_NAME 
+		FROM LIBRARY LEFT OUTER JOIN BOOK USING(BOOK_NO) 
+		LEFT OUTER JOIN CUSTOMER USING(USER_ID))
+		<where>
+			<if test="searchCondition == 'userId'">
+				USER_ID LIKE '%'||#{searchKeyword}||'%'
+			</if>
+			<if test="searchCondition == 'bookName'">
+				BOOK_NAME LIKE '%'||#{searchKeyword}||'%'
+			</if>
+		</where>
+		ORDER BY 1 DESC
+	</select>
+	<select id="selectBooknameList" resultType="string">
+		SELECT BOOK_NAME FROM BOOK
+	</select>
+	<select id="selectUseridList" resultType="string">
+		SELECT USER_ID FROM CUSTOMER
+	</select>
+	<select id="selectBooknoByBookname" resultType="_int">
+		SELECT BOOK_NO FROM BOOK WHERE BOOK_NAME = #{bookName}
+	</select>
+	<insert id="leaseInsert">
+		INSERT INTO LIBRARY VALUES(SEQ_LEASE_NO.NEXTVAL,#{bookNo},#{userId},DEFAULT, SYSDATE+2)
+	</insert>
+	<select id="selectOneByLeaseNo" resultMap="rsetToLibrary">
+		SELECT * FROM (SELECT LEASE_NO, BOOK_NO, USER_ID, LEASE_DATE, RETURN_DATE, BOOK_NAME, USER_NAME 
+		FROM LIBRARY LEFT OUTER JOIN BOOK USING(BOOK_NO) 
+		LEFT OUTER JOIN CUSTOMER USING(USER_ID)) WHERE LEASE_NO = #{leaseNo}
+	</select>
+	<delete id="leaseDelete">
+		DELETE FROM LIBRARY WHERE LEASE_NO = #{leaseNo}
+	</delete>
+</mapper>

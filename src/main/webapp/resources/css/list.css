@@ -1,0 +1,146 @@
+@charset "UTF-8";
+
+#main{
+	padding: 50px;
+	background-color: #fffcfc;
+}
+
+.content {
+	padding-left: 20px;
+}
+
+.menu {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 10px;
+	height: 40px;
+	padding-bottom: 10px;
+}
+
+.title {
+	color: #2d336a;
+}
+
+.insert {
+	text-align: center;
+}
+
+.insert button {
+	color: #fff;
+	background-color: #8089dd;
+	border-radius: 5px;
+	height: 35px;
+	width: 60px;
+	border: none;
+}
+
+.insert button:hover {
+	background-color: #2d336a;
+}
+
+.insert a {
+	text-decoration: none;
+	color: #fff;
+}
+
+.search {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+.select select {
+	height: 35px;
+	border-radius: 5px;
+	border:1px solid #8089dd;
+}
+
+.input input {
+	height: 27px;
+	padding: 3px 3px 3px 10px;
+	width: 300px;
+	border-radius: 5px;
+	border:1px solid #8089dd;
+	outline: none;
+}
+
+.searchbtn button {
+	height: 35px;
+	width: 60px;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	background-color: #8089dd;
+}
+
+.searchbtn button:hover {
+	background-color: #2d336a;
+}
+
+.list table {
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+	padding: 5px;
+}
+
+.list thead {
+	background-color: #8089dd;
+	color: #fff;
+}
+
+.list .listno {
+	width: 50px;
+}
+
+.list .leaseno {
+	width: 100px;
+}
+
+.list .bookno {
+	width: 400px;
+}
+
+.bookno a {
+	text-decoration: none;
+	color: #222;
+}
+
+.userNo a, .userId a, .userName a {
+	text-decoration: none;
+	color: #222;
+}
+
+.list .table {
+	padding: 10px;
+	border-radius: 3px;
+	margin-right: 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+
+
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	line-height: 32px;
+}
+
+.pagination a {
+	font-size: 20px;
+	text-decoration: none;
+	color: #2d336a;
+	text-align: center;
+	width: 30px;
+	border-radius: 7px;
+	transition-duration: 1.0s;
+}
+
+.pagination a:hover {
+	background-color: #8089dd;
+}

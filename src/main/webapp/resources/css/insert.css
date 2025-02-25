@@ -1,0 +1,124 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'CookieRun-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+main{
+	padding: 50px;
+	background-color: #fffcfc;
+}
+form{
+	display: block;
+	--font-family: 'CookieRun-Regular';	
+}
+
+.content-title{
+	font-size: 25px;
+	color: #2d336b;
+	margin: 0;
+	padding: 30px 0;
+	font-weight: bold;
+}
+
+table{
+	height: 300px;
+	margin: 30px auto;
+}
+
+.detail{
+	--border: 1px solid #222;
+	height: 300px;
+	margin: 30px auto;
+	border-radius: 5px;
+}
+.detail td{
+	width: 300px;
+	height: 55px;
+	text-align: center;
+}
+.tbTitle {
+	border-radius: 4px;
+	background-color: #8089dd;
+	font-size: 20px;
+	color: #fff;
+}
+.lease-tbTitle{
+	font-size: 30px;
+	background-color: #8089dd;
+	text-decoration: #fff;
+	border-radius: 5px;
+	color: #fff;	
+}
+.detail input{
+	width: 300px;
+	height: 99%;
+	border: 0;
+	border-radius: 4px;
+	background-color: #fff;
+}
+.tbContent input{
+	border: none;
+	width: 99%;
+	height: 100%;
+	padding-left: 30px;
+	font-size: 30px;
+	font-family: 'CookieRun-Regular';
+}
+
+.tbContent .radio {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.radio input {
+	height: 12px;
+	width: 12px;
+	margin-top: 10px;
+}
+
+.male {
+	margin-right: 5px;
+}
+
+.delete-button{
+	display: block;
+	width: 150px;
+	padding: 10px 20px;
+	border:0;
+	border-radius: 4px;
+	background-color: #8089dd;
+	margin: 20px auto;
+	text-align: center;
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+	font-family: 'CookieRun-Regular';	
+}
+.delete-button button{
+	color: #fff;
+	background-color: #8089dd;
+	border: none;
+	margin-bottom: 30px;
+	width: 60px;
+	height: 40px;
+	border-radius: 5px;
+	transition-duration: 1.0s;
+}
+
+.delete-button button:hover {
+	background-color : #2d336a;
+}
+
+.tbContent select {
+	width: 250px;
+	height: 80px;
+	border: 1px solid #8089dd;
+	border-radius: 10px;
+	font-size: 30px;
+	text-align: center;
+	font-family: 'CookieRun-Regular';
+}
